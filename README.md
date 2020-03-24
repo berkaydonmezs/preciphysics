@@ -8,8 +8,3 @@
 ![](preciphysics/logo.png)
 
 ***by Berkay & Kutay DÖNMEZ***
-
-License
-----
-
-MIT
