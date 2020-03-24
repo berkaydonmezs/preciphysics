@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 
 
 #====================================================================*
-#CALCULATIONS FOR THE USE OF PRECIPITATION PHYSICS
+#CALCULATIONS FOR THE USE OF METEOROLOGICAL STUDY AND NUMERICAL MODELS
 #____________________________________________________________________*
 
 #Constants for Calculations 
