@@ -5,5 +5,11 @@
 
 > Experimental work by an Undergraduate Student dedicated to the improvement of the meteorological implications and numerical modelling studies in Turkey.
 
-***by Berkay & Kutay DÖNMEZ***
 ![](preciphysics/logo.png)
+
+***by Berkay & Kutay DÖNMEZ***
+
+License
+----
+
+MIT
