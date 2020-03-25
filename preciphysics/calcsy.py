@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 
 
 #====================================================================*
-#CALCULATIONS FOR THE USE OF METEOROLOGICAL STUDY AND NUMERICAL MODELS
+#CALCULATIONS FOR THE USE OF METEOROLOGICAL STUDY AND NUMERICAL MODEL
 #____________________________________________________________________*
 
 #Constants for Calculations. 
