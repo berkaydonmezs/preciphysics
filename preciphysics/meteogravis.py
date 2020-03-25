@@ -102,7 +102,7 @@ def meteogram_PRCVS(lat, lon, data):
     lon : Longitude
     data: GFS 0.25 Forecast dataset
     
-    NOTE : Temperature given in m, changed to km in the function! 
+    NOTE : Visibility given in m, changed to km in the function! 
            
     """
     #_____________________________________________________*
