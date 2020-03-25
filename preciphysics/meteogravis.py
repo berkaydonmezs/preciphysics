@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[136]:
-
 
 from visjobs.visjobs.datas import get_data
 import xarray as xr
