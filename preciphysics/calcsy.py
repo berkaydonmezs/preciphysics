@@ -9,10 +9,10 @@ import matplotlib.pyplot as plt
 
 
 #====================================================================*
-#CALCULATIONS FOR THE USE OF METEOROLOGICAL STUDY AND NUMERICAL MODELS
+#CALCULATIONS FOR THE USE OF METEOROLOGICAL STUDY AND NUMERICAL MODEL
 #____________________________________________________________________*
 
-#Constants for Calculations 
+#Constants for Calculations. 
 aT  = 4.0 * 10**-5 # Constant for calculation of 'molecular speed of molecule' using temperature (K.(m^-2).(s^2).mole.(g^-1))
 aP  = 0.0342       # Constant for calculation of pressure in an isothermal atmosphere (K.(m'-1))
 p0  = 101.325      # Average pressure at surface (kPa)
