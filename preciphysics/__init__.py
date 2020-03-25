@@ -1,2 +1,2 @@
-import preciphysics.preciphysics.calcsy
-import preciphysics.presiphysics.meteogravis
+import preciphysics.calcsy
+import presiphysics.meteogravis
