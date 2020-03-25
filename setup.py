@@ -1,5 +1,5 @@
 from distutils.core import setup
-setup(name='Map',
+setup(name='preciphysics',
       version='1.0',
       author='Berkay DONMEZ',
       packages=['Map'],
