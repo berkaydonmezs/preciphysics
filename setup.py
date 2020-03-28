@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 with open("README.md", "r") as readme_file:
     readme = readme_file.read()
 
-requirements = []
+requirements = ["xarray>=0.15.1", "cartopy>=0.17.0","plotly>=4.5.4"]
 
 setup(
     name="preciphysics",

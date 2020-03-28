@@ -1,9 +1,0 @@
-README.md
-setup.py
-preciphysics/__init__.py
-preciphysics/calcsy.py
-preciphysics/meteogravis.py
-preciphysics.egg-info/PKG-INFO
-preciphysics.egg-info/SOURCES.txt
-preciphysics.egg-info/dependency_links.txt
-preciphysics.egg-info/top_level.txt

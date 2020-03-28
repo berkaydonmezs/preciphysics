@@ -1,2 +1,0 @@
-import preciphysics.calcsy
-import presiphysics.meteogravis
