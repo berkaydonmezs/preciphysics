@@ -9,6 +9,7 @@
 ![](preciphysics/logo.png)
 
 ***by Berkay & Kutay DÖNMEZ***
+------------
 
  ## calcsy.py &radic;
 - Calcsy offers a bunch of meteorological calculations. Fundamentally used equations in Thermodynamics and Precipitation physics are gathered in simply defined functions. 
@@ -58,7 +59,12 @@ Output :
 	*`Meteogravis only accept GFS Dataset now but future improvements on the way in which other Datasets will also be accepted.`*
 
 
+------------
 
+| preciphysics  | *Function Counts in use*  |
+| ------------ | ------------ |
+| *Calcsy*  | 9 Functions in use |
+| *Meteogravis*  | 2 Functions in use |
 
 
 
