@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # coding: utf-8
-
+#THIS PARTICULAR SCRIPT OFFERS YOU TO PLOT YOUR OWN METEOGRAM GIVEN THE NECESSARY PARAMETERS# 
+#IT REQUIRES GFS DATASET#
+#YET THE IMPROVED VERSION, IN WHICH THE USAGE OF OTHER DATASETS ARE SUPPORTED, WILL BE RELEASED SOON#
 
 from visjobs.visjobs.datas import get_data
 import xarray as xr
@@ -15,7 +17,7 @@ from pytz import timezone
 #_________________________________________________________________________________*
 
 data = get_data.pick_data(year='2020', month='03', day='24', hour='12', latest=False, model='GFS')
-# Function exports the GFS dataset initialized at 2020-03-24-12 UTC extending back to the previous 5 days.
+# Function exports the GFS dataset initialized at 2020-03-24-12 UTC extending forward 5 days.
 # Go to https://github.com/donmezk/visjobs for further explanation about getting the data
 
 #_____________________________________________________*
@@ -24,24 +26,46 @@ data = get_data.pick_data(year='2020', month='03', day='24', hour='12', latest=F
 #         Assigning to the dataset variables          #
 #_____________________________________________________*
 
-def meteogram_TMSLP(lat, lon, data):
+def meteogram_TMSLP(lat, lon, days, data):
     """ Returns temperature and MSLP meteogram plot.
     Given the data, specified latitude and longitude 
-    lat : Latitude
-    lon : Longitude
-    data: GFS 0.25 Forecast dataset
+    lat  : Latitude
+    lon  : Longitude
+    days : Count of days to plot
+    data : GFS 0.25 Forecast dataset
     
     NOTE : Temperature given in K, changed to degreeC in the function! 
-           Pressure is given in Pa, changed to hPa in the function! 
+           Pressure is given in Pa, changed to hPa in the function!
+           It may take several seconds to plot the meteogram.
     """
     #_____________________________________________________*
     #                Dataset Mungling Part                #
     #_____________________________________________________*
     
+    #Assign requested hour counts to a variable 
+    day_count = int(days)
+    try:
+        if day_count > 0 and day_count<6 :
+            if day_count == 1:
+                sliced = 9
+            elif day_count == 2:
+                sliced = 17
+            elif day_count == 3:
+                sliced = 25
+            elif day_count == 4:
+                sliced = 33
+            elif day_count == 5:
+                sliced = 38    
+    except: 
+        raise ValueError("Please enter days in between 1 and 5")
+    
+    
     # Extract Temperature and MSLP values from the dataset and Specify time range in interest
-    temp = data['tmpsfc'].sel(time=data['tmpsfc']['time'][-15: -1])
-    pres = data['prmslmsl'].sel(time=data['prmslmsl']['time'][-15: -1])
-    time = data['acpcpsfc']['time'][-15: -1]
+    temp = data['tmpsfc'].sel(time=data['tmpsfc']['time'].isel(time=slice(0,sliced)))
+    pres = data['prmslmsl'].sel(time=data['prmslmsl']['time'].isel(time=slice(0,sliced)))
+    time = data['acpcpsfc']['time'].isel(time=slice(0,sliced))
+    initialization = data['acpcpsfc']['time'].isel(time=slice(0,sliced))[0].values
+    init = str(initialization)[0:-16] + 'Z'
     
     #Set the Latitude and Longitude given as input 
     pres1 = pres.sel(lon = lon, lat = lat ).values/100
@@ -57,8 +81,9 @@ def meteogram_TMSLP(lat, lon, data):
     #Create fig and set ax and customize the plot
     fig = plt.figure(figsize=(13,6))
     ax  = plt.subplot(2,1,1)
-    ax.plot(time1, press1,'bs',color='red')
-    ax.plot(time1, press1,color='red')
+    ax.text(0.83, 1.03, 'INIT : {}'.format(init), fontsize=12, transform=ax.transAxes)
+    ax.plot(time1, pres1,'bs',color='red')
+    ax.plot(time1, pres1,color='red')
     ax.set_ylim(np.min(pres1)-2,np.max(pres1)+2)
     ax.legend(['pressure(mb)'], facecolor='w')
     ax.spines['left'].set_visible(False)
@@ -95,24 +120,45 @@ def meteogram_TMSLP(lat, lon, data):
     fig.tight_layout()
     
     
-def meteogram_PRCVS(lat, lon, data):
+def meteogram_PRCVS(lat, lon, days, data):
     """ Returns Accumulated Precipitation and Surface Visibility meteogram plot.
     Given the data, specified latitude and longitude 
     lat : Latitude
     lon : Longitude
+    days : Count of days to plot
     data: GFS 0.25 Forecast dataset
     
     NOTE : Visibility given in m, changed to km in the function! 
+           It may take several seconds to plot the meteogram.
            
     """
     #_____________________________________________________*
     #                Dataset Mungling Part                #
     #_____________________________________________________*
     
+    #Assign requested hour counts to a variable 
+    day_count = int(days)
+    try:
+        if day_count > 0 and day_count<6 :
+            if day_count == 1:
+                sliced = 9
+            elif day_count == 2:
+                sliced = 17
+            elif day_count == 3:
+                sliced = 25
+            elif day_count == 4:
+                sliced = 33
+            elif day_count == 5:
+                sliced = 38    
+    except: 
+        raise ValueError("Please enter days in between 1 and 5")
+    
     # Extract Temperature and MSLP values from the dataset and Specify time range in interest
-    vis = data['vissfc'].sel(time=data['vissfc']['time'][-15: -1])
-    prec = data['acpcpsfc'].sel(time=data['acpcpsfc']['time'][-15: -1])
-    time = data['acpcpsfc']['time'][-15: -1]
+    vis = data['vissfc'].sel(time=data['vissfc']['time'].isel(time=slice(0,sliced)))
+    prec = data['acpcpsfc'].sel(time=data['acpcpsfc']['time'].isel(time=slice(0,sliced)))
+    time = data['acpcpsfc']['time'].isel(time=slice(0,sliced))
+    initialization = data['acpcpsfc']['time'].isel(time=slice(0,sliced))[0].values
+    init = str(initialization)[0:-16] + 'Z'
     
     #Set the Latitude and Longitude given as input 
     vis1 = vis.sel(lon = lon, lat = lat ).values * (10**-3)
@@ -127,6 +173,7 @@ def meteogram_PRCVS(lat, lon, data):
     #Create fig and set ax and customize the plot
     fig = plt.figure(figsize=(13,6))
     ax = plt.subplot(2,1,1)
+    ax.text(0.83, 1.03, 'INIT : {}'.format(init), fontsize=12, transform=ax.transAxes)
     ax.plot(time1, prec1,'bs',color='purple')
     ax.plot(time1, prec1,color='purple')
     ax.set_ylim(np.min(prec1)-2,np.max(prec1)+2)
