@@ -120,7 +120,7 @@ def meteogram_TMSLP(lat, lon, days, data):
     fig.tight_layout()
     
     
-def meteogram_PRCVS(lat, lon, day, data):
+def meteogram_PRCVS(lat, lon, days, data):
     """ Returns Accumulated Precipitation and Surface Visibility meteogram plot.
     Given the data, specified latitude and longitude 
     lat : Latitude
