@@ -39,7 +39,7 @@ Output :
 
 
 ## meteogravis.py &radic;
-- Meteogravis offers you to plot your own meteogram easily. There are 2 different functions in which the former plots the Temperature and MSLP meteogram while the latter plots the Visibility and the Precipitation Accumulation.
+- Meteogravis offers you to plot your Meteogram easily. There are two different functions in which the former plots the Temperature and MSLP Meteogram, while the latter plots the Visibility and the Precipitation Accumulation.
 - It expects from you to enter individually preferred 4 parameters which are ;
 
 	1. Latitude
