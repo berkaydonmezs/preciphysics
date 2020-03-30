@@ -8,7 +8,6 @@
 
 ![](preciphysics/logo.png)
 
-***by Berkay & Kutay DÖNMEZ***
 ------------
 
  ## calcsy.py &radic;
@@ -66,6 +65,6 @@ Output :
 | *Calcsy*  | 9 Functions in use |
 | *Meteogravis*  | 2 Functions in use |
 
-
+***by Berkay & Kutay DÖNMEZ***
 
 
