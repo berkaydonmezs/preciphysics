@@ -1,2 +1,3 @@
-import preciphysics.calcsy
-import presiphysics.meteogravis
+from .numerics import calcsy
+from .plots import meteogravis
+
