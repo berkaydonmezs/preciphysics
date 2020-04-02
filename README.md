@@ -1,6 +1,6 @@
 ## &infin; preciphysics &infin;
 
-- Preciphysics is a Python library offering a bunch of meteological and numerical calculations.
+- Preciphysics is a Python library offering a bunch of meteorological and numerical calculations.
 - Apart from numerical calculations it offers some visualization plots such as meteogram, skew-T etc.
 - This Python package is under development with an attempt to be taken onto further supportment.
 
